@@ -17,15 +17,12 @@ def home():
 
 @app.get("/tasks")
 def get_tasks():
-    return {
-        "tasks": [
-            {"id": 1, "title": "Apprendre GitHub Actions"},
-            {"id": 2, "title": "Créer une API avec FastAPI"}
-        ]
-    }
+    return {"tasks": tasks}
 class Task(BaseModel):
     title: str
-
+@app.get("/tasks")
+def get_tasks():
+    return {"tasks": tasks}
 
 @app.post("/tasks")
 def create_task(task: Task):
