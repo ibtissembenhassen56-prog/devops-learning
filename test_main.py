@@ -19,3 +19,17 @@ def test_get_tasks():
             {"id": 2, "title": "Créer une API avec FastAPI"}
         ]
     }
+def test_create_task():
+    response = client.post(
+        "/tasks",
+        json={"title": "Apprendre Docker"}
+    )
+
+    assert response.status_code == 200
+    assert response.json() == {
+        "message": "Tâche créée",
+        "task": {
+            "id": 3,
+            "title": "Apprendre Docker"
+        }
+    }
