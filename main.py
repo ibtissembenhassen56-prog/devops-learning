@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-
+from pydantic import BaseModel
 app = FastAPI(title="Task Manager API")
 
 
@@ -19,4 +19,17 @@ def get_tasks():
             {"id": 1, "title": "Apprendre GitHub Actions"},
             {"id": 2, "title": "Créer une API avec FastAPI"}
         ]
+    }
+class Task(BaseModel):
+    title: str
+
+
+@app.post("/tasks")
+def create_task(task: Task):
+    return {
+        "message": "Tâche créée",
+        "task": {
+            "id": 3,
+            "title": task.title
+        }
     }
