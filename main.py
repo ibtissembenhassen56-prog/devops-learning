@@ -2,7 +2,10 @@ from fastapi import FastAPI
 from pydantic import BaseModel
 app = FastAPI(title="Task Manager API")
 
-
+tasks = [
+    {"id": 1, "title": "Apprendre GitHub Actions"},
+    {"id": 2, "title": "Créer une API avec FastAPI"}
+]
 @app.get("/health")
 def health_check():
     return {"status": "ok"}
