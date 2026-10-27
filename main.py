@@ -37,3 +37,9 @@ def create_task(task: Task):
         "message": "Tâche créée",
         "task": new_task
     }
+    tasks_response = client.get("/tasks")
+
+    assert tasks_response.json()["tasks"][-1] == {
+        "id": 3,
+        "title": "Apprendre Docker"
+    }
